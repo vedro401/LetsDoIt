@@ -64,4 +64,38 @@ public class API {
         return res;
     }
 
+    public static List<Chat> getAllChats(final String currentUser, final AllChatsAdapter chatAdater ) {
+        final List<Chat> chats = new ArrayList<>();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("chats");
+        System.out.println("Start");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                System.out.println("Check chats");
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
+                    System.out.println(d.toString());
+                    Chat c = d.getValue(Chat.class);
+                    DataSnapshot s = d.child("members");
+                    System.out.println(s.toString());
+                    ArrayList<String> mems = new ArrayList<String>();
+                    for (DataSnapshot s1 : s.getChildren()) {
+                        System.out.println(s1.toString());
+                        mems.add(s1.child("name").getValue(String.class));
+                    }
+                    c.setMember(mems);
+                    if (c.getAdmin().equals(currentUser) || c.getMember().contains(currentUser))
+                        chats.add(c);
+                    chatAdater.notifyDataSetChanged();
+                }
+                System.out.println("End");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return chats;
+    }
+
 }
