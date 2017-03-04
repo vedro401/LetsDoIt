@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity
     RecyclerView chatList;
     ChatAdapter chatAdater;
     String currentUser;
+    String currentChat,anotherUser;
     private DatabaseReference mSimpleFirechatDatabaseReference;
     private LinearLayoutManager mLinearLayoutManager;
 
@@ -50,12 +51,13 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         currentUser = "nickname";
+        anotherUser = "anotherUser";
+        currentChat = "-KeP_OOoPKQ9Eyq6SlGj";
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String chatKey = API.addNewChat(currentUser);
-                API.addMessageToChat(currentUser,"Hello",chatKey,null);
+
             }
         });
 

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Chat {
     String title;
     String lastMessage;
-    ArrayList<String > member;
+    ArrayList<String> member;
     String  admin;
 
     public Chat(String title, String lastMessage, ArrayList<String> member, String admin) {
