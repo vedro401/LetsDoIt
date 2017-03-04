@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.bottomless.letsdoit.model.Chat;
+
+import java.util.ArrayList;
 
 /**
  * Created by someone on 04.03.17.
@@ -17,7 +20,7 @@ import android.widget.TextView;
 public class AllChatsFragment extends Fragment{
     Context context;
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private AllChatsAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
@@ -39,8 +42,11 @@ public class AllChatsFragment extends Fragment{
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-//        mAdapter = new MyAdapter(myDataset);
-//        mRecyclerView.setAdapter(mAdapter);
+        ArrayList<Chat> chats = new ArrayList<>();
+        mAdapter = new AllChatsAdapter();
+        mRecyclerView.setAdapter(mAdapter);
+
+        API.getAllChats("nickname", mAdapter);
 
     }
 
