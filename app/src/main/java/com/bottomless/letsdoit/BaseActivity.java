@@ -24,7 +24,7 @@ public class BaseActivity extends AppCompatActivity
         setContentView(R.layout.activity_base);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        API.getMessagesFromChat("-KePeDyU-Z42mvtzffNd");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

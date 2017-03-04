@@ -44,9 +44,22 @@ public class API {
     }
 
     public static ArrayList<Message> getMessagesFromChat(String chatKey){
-        ArrayList<Message> res = new ArrayList<Message>();
+        final ArrayList<Message> res = new ArrayList<Message>();
         DatabaseReference messagesDatabaseReference = FirebaseDatabase.getInstance().getReference().child("chatsWithMessages").child(chatKey);
+        messagesDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot d: dataSnapshot.getChildren()){
+                    res.add(d.getValue(Message.class));
+                    System.out.println(d.toString());
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         return res;
     }
