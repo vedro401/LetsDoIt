@@ -55,6 +55,7 @@ public class API {
         final List<Chat> chats = new ArrayList<>();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("chats");
         System.out.println("Start");
+        chatAdater.setChats(chats);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
