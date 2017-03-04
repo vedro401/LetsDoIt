@@ -46,5 +46,7 @@ public class AllChatsAdapter  extends RecyclerView.Adapter<AllChatsAdapter.ViewH
 
     }
 
-
+    public void setChats(List<Chat> chats) {
+        this.chats = chats;
+    }
 }
