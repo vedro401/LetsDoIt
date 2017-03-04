@@ -18,17 +18,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
-    Button loginButton;
+    Button loginButton,registerButton;
     EditText inputEmail,inputPassword;
     private FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         auth = FirebaseAuth.getInstance();
-        if (auth.getCurrentUser() != null) {
+        /*if (auth.getCurrentUser() != null) {
             startActivity(new Intent(LoginActivity.this, BaseActivity.class));
             finish();
-        }
+        }*/
         setContentView(R.layout.activity_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -43,6 +43,15 @@ public class LoginActivity extends AppCompatActivity {
         inputEmail = (EditText) findViewById(R.id.email_edit);
         inputPassword = (EditText) findViewById(R.id.password_edit);
         loginButton = (Button) findViewById(R.id.login_button);
+        registerButton = (Button) findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+
 
 
 }

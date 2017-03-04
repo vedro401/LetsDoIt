@@ -93,7 +93,7 @@ public class API {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                System.out.println(databaseError.toString());
             }
         });
         return chats;
