@@ -44,6 +44,9 @@ public class AllChatsFragment extends Fragment{
         // specify an adapter (see also next example)
         ArrayList<Chat> chats = new ArrayList<>();
         mAdapter = new AllChatsAdapter();
+        ArrayList<Chat> testArray = new ArrayList<>();
+        testArray.add(new Chat("Title", "message"));
+        mAdapter.setChats(testArray);
         mRecyclerView.setAdapter(mAdapter);
 
         API.getAllChats("nickname", mAdapter);
