@@ -5,4 +5,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="log_in">Log in</string>
+    <string name="minimum_password">Password must be bigger than 6 chars</string>
+    <string name="auth_failed">Log In failed</string>
 </resources>
