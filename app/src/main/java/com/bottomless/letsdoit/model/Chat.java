@@ -13,6 +13,15 @@ public class Chat {
     String lastMessage;
     ArrayList<String> member;
     String  admin;
+    String key;
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public Chat(String title, String lastMessage, ArrayList<String> member, String admin) {
         this.title = title;

@@ -90,6 +90,7 @@ public class API {
                         mems.add(s1.child("name").getValue(String.class));
                     }
                     c.setMember(mems);
+                    c.setKey(d.getKey());
                     if (c.getAdmin().equals(currentUser) || c.getMember().contains(currentUser))
                         chats.add(c);
                     chatAdater.notifyDataSetChanged();
