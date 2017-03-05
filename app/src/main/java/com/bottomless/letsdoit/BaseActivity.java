@@ -15,7 +15,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.bottomless.letsdoit.model.Message;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
 
 public class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,6 +29,10 @@ public class BaseActivity extends AppCompatActivity
         setContentView(R.layout.activity_base);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         FirebaseAuth auth = FirebaseAuth.getInstance();
+        ArrayList<Message> chats = API.getMessagesFromChat("-KePfSP-zjnNrOH6LI5X");
+        for (Message c: chats){
+            System.out.println(c.getUsername());
+        }
         System.out.println("Current user "+auth.getCurrentUser().getDisplayName());
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

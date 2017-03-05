@@ -91,12 +91,13 @@ public class RegistrationActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
                                             Log.d("tag", "User profile updated."+auth.getCurrentUser().getDisplayName());
-
+                                            //API.addNewChat(auth.getCurrentUser().getDisplayName());
+                                            startActivity(new Intent(RegistrationActivity.this, BaseActivity.class));
+                                            finish();
                                         }
                                     }
                                 });
-                                startActivity(new Intent(RegistrationActivity.this, BaseActivity.class));
-                                finish();
+
                             }
 
                         }

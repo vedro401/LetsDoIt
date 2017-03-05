@@ -45,12 +45,18 @@ public class API {
 
     public static ArrayList<Message> getMessagesFromChat(String chatKey){
         final ArrayList<Message> res = new ArrayList<Message>();
-        DatabaseReference messagesDatabaseReference = FirebaseDatabase.getInstance().getReference().child("chatsWithMessages").child(chatKey);
+        DatabaseReference messagesDatabaseReference = FirebaseDatabase.getInstance().getReference().child("chatsWithMessages").child(chatKey).child("messages");
         messagesDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot d: dataSnapshot.getChildren()){
-                    res.add(d.getValue(Message.class));
+                    Message newMsg = new Message();
+                    newMsg.setUsername(d.child("username").getValue(String.class));
+                    newMsg.setTag(d.child("tag").getValue(String.class));
+                    newMsg.setText(d.child("text").getValue(String.class));
+                    newMsg.setTimeFromServer(d.child("time").getValue(Long.class));
+                    System.out.println("User msg + " + newMsg.getUsername());
+                    res.add(newMsg);
                     System.out.println(d.toString());
                 }
             }

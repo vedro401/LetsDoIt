@@ -13,6 +13,16 @@ public class Message {
     String username;
     String tag;
     Map<String ,String> time;
+    Long timeFromServer;
+
+    public Long getTimeFromServer() {
+        return timeFromServer;
+    }
+
+    public void setTimeFromServer(Long timeFromServer) {
+        this.timeFromServer = timeFromServer;
+    }
+
     public Message(){}
     public String getText() {
         return text;
